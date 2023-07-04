@@ -2,8 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react'
 import Categories from './Categories';
 import Products from 'component/Product/Products';
 import serverCategory from 'handler/categories'
+import serverProduct from 'handler/product';
 
 const {getCategories} = serverCategory
+const {getAllProduct} = serverProduct
 const Home = () => {
   
   const [category, setCategory] = useState([])
@@ -12,11 +14,18 @@ const Home = () => {
   const getAllCategries = useCallback(async() => {
     let value = await getCategories()
     console.log("getting value in return: ", value)
-    setCategory(value.data)
+    setCategory(value.data);
   }, [])
+
+  const getAllProducts = async() =>{
+    let productValue = await getAllProduct();
+    console.log("All Products", productValue)
+  }
+
 
   useEffect(() => {
     getAllCategries();
+    getAllProducts();
   }, [getAllCategries])
 
   return (
