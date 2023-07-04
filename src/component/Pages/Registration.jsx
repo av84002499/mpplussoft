@@ -60,6 +60,7 @@ export const Registration = () => {
 
     return (
         <div className="container">
+            <h3 className='text-center mt-5'>Register</h3>
             <form onSubmit={onSubmitForm} className='mt-5'>
                 <div className="form-outline mb-4">
                     <input type="text" id="registerName" className="form-control" value={formInput.name} onChange={handleUsernameChange} />

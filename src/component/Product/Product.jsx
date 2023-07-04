@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Product = () => {
+  const { state: article_state } = useLocation();
   return (
     <>
       <div className="container my-3 border">
@@ -11,13 +13,12 @@ const Product = () => {
           <div className="col-lg-6 col-md-6 border">
             <div className="card my-3 border-0">
               <div className="card-body">
-                <p><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> 4.5 | 143 Reviews</p>
-                <h5 className="card-title">Product-1</h5>
-                <h6 className="card-subtitle mb-2 text-body-secondary">Rs.142/-</h6>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="!" className="btn btn-primary card-link">Card link</a>
-                <a href="!" className="btn btn-success card-link">Card link</a>
-                <a href="!" className="btn btn-danger card-link">Card link</a>
+                <p><i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i><i className="bi bi-star-fill"></i><i className="bi bi-star-half"></i> 4.5 | 143 Reviews</p>
+                <h5 className="card-title mb-5"><strong>Product Name: </strong>{article_state.product.title}</h5>
+                <h6 className="card-subtitle mb-2 text-body-secondary"><strong>Product Price</strong>Rs.{article_state.product.price}/-</h6>
+                <p className="card-text">{article_state.product?.description}</p>
+                <p className="card-text"><strong>Created By:</strong> <small className="text-body-secondary">{article_state.product?.createdBy?.name}</small></p>
+
               </div>
             </div>
           </div>
